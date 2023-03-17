@@ -1,5 +1,6 @@
 package com.tsypk.databasecoursework.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.persistence.*
 
 @Entity
@@ -9,8 +10,10 @@ import jakarta.persistence.*
 open class CarBrand {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    @field:JsonProperty("id", required = true)
+    open var id: Int = 0
 
     @Column(name = "name", nullable = false)
-    open var name: String? = null
+    @field:JsonProperty("name", required = true)
+    open var name: String = ""
 }

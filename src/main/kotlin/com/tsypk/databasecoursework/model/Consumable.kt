@@ -1,5 +1,6 @@
 package com.tsypk.databasecoursework.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.persistence.*
 
 @Entity
@@ -7,17 +8,22 @@ import jakarta.persistence.*
 open class Consumable {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    @field:JsonProperty("id", required = true)
+    open var id: Int = 0
 
     @Column(name = "photo")
-    open var photo: String? = null
+    @field:JsonProperty("photo_url", required = true)
+    open var photo: String = ""
 
     @Column(name = "price", nullable = false)
-    open var price: Double? = null
+    @field:JsonProperty("price", required = true)
+    open var price: Double = 0.0
 
     @Column(name = "description", length = Integer.MAX_VALUE)
-    open var description: String? = null
+    @field:JsonProperty("description", required = true)
+    open var description: String = ""
 
     @JoinColumn(name = "serial_number")
-    open var serialNumber: Int? = null
+    @field:JsonProperty("serial_number", required = true)
+    open var serialNumber: Int = 0
 }

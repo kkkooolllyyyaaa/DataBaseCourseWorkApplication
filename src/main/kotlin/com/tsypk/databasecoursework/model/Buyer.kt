@@ -11,5 +11,5 @@ open class Buyer {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
-    open var account: Account? = null
+    open var account: Account = Account()
 }

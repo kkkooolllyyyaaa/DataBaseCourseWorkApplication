@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody
 @RepositoryRestResource(path = "accessory")
 interface AccessoryRepository : CrudRepository<Accessory, Int> {
     fun findBySerialNumber(@RequestBody serialNumber: Int): Accessory?
+
+    fun findAllBySerialNumberIn(serialNumbers: Set<Int>): List<Accessory>
 }

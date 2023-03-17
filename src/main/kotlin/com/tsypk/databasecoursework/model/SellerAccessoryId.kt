@@ -10,10 +10,10 @@ import java.util.*
 @Embeddable
 open class SellerAccessoryId : Serializable {
     @Column(name = "seller_id", nullable = false)
-    open var sellerId: Int? = null
+    open var sellerId: Int = 0
 
     @Column(name = "accessory_id", nullable = false)
-    open var accessoryId: Int? = null
+    open var accessoryId: Int = 0
 
     override fun hashCode(): Int = Objects.hash(sellerId, accessoryId)
     override fun equals(other: Any?): Boolean {

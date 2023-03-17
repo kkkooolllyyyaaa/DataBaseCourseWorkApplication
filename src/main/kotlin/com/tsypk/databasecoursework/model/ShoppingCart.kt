@@ -7,16 +7,16 @@ import jakarta.persistence.*
 open class ShoppingCart {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    open var id: Int = 0
 
     @Column(name = "amount", nullable = false)
-    open var amount: Double? = null
+    open var amount: Double = 0.0
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "buyer_id")
-    open var buyer: Buyer? = null
+    open var buyer: Buyer = Buyer()
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = ShoppingCartEntry::class)
     @JoinColumn(name = "shopping_cart_id")
-    open var shoppingCartEntries: List<ShoppingCartEntry> = emptyList()
+    open var shoppingCartEntries: MutableList<ShoppingCartEntry> = mutableListOf()
 }

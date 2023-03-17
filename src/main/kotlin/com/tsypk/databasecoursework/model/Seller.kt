@@ -11,17 +11,17 @@ import jakarta.persistence.*
 open class Seller {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    open var id: Int = 0
 
     @Column(name = "name", nullable = false)
-    open var name: String? = null
+    open var name: String = ""
 
     @Column(name = "contact", nullable = false, length = Integer.MAX_VALUE)
-    open var contact: String? = null
+    open var contact: String = ""
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
-    open var account: Account? = null
+    open var account: Account = Account()
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, targetEntity = Accessory::class)
     @JoinTable(
@@ -29,7 +29,7 @@ open class Seller {
         joinColumns = [JoinColumn(name = "seller_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "accessory_id", referencedColumnName = "id")]
     )
-    var accessories: Set<Accessory> = mutableSetOf()
+    open var accessories: MutableList<Accessory> = mutableListOf()
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, targetEntity = CarPart::class)
     @JoinTable(
@@ -37,7 +37,7 @@ open class Seller {
         joinColumns = [JoinColumn(name = "seller_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "car_part_id", referencedColumnName = "id")]
     )
-    var carParts: Set<CarPart> = mutableSetOf()
+    open var carParts: MutableList<CarPart> = mutableListOf()
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, targetEntity = Consumable::class)
     @JoinTable(
@@ -45,5 +45,5 @@ open class Seller {
         joinColumns = [JoinColumn(name = "seller_id", referencedColumnName = "id")],
         inverseJoinColumns = [JoinColumn(name = "consumable_id", referencedColumnName = "id")]
     )
-    var consumables: Set<Consumable> = mutableSetOf()
+    open var consumables: MutableList<Consumable> = mutableListOf()
 }

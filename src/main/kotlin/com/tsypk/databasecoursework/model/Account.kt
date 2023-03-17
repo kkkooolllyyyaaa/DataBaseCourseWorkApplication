@@ -10,11 +10,11 @@ import jakarta.persistence.Table
 open class Account {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    open var id: Int = 0
 
     @Column(name = "login", nullable = false)
-    open var login: String? = null
+    open var login: String = ""
 
     @Column(name = "password", nullable = false)
-    open var password: String? = null
+    open var password: String = ""
 }

@@ -9,12 +9,12 @@ import jakarta.persistence.*
 open class Car {
     @Id
     @Column(name = "id", nullable = false)
-    open var id: Int? = null
+    open var id: Int = 0
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_brand_id")
-    open var carBrand: com.tsypk.databasecoursework.model.CarBrand? = null
+    open var carBrand: CarBrand = CarBrand()
 
     @Column(name = "model", nullable = false)
-    open var model: String? = null
+    open var model: String = ""
 }

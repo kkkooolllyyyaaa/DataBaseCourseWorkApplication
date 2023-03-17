@@ -7,4 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 @RepositoryRestResource(path = "consumable")
 interface ConsumableRepository : CrudRepository<Consumable, Int> {
     fun findBySerialNumber(serialNumber: Int): Consumable?
+
+    fun findAllBySerialNumberIn(serialNumbers: Set<Int>): List<Consumable>
 }

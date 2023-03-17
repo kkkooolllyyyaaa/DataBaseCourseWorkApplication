@@ -7,17 +7,17 @@ import jakarta.persistence.*
 open class BuyerOrder {
     @Id
     @Column(name = "shopping_cart_id", nullable = false)
-    open var id: Int? = null
+    open var id: Int = 0
 
     @MapsId
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "shopping_cart_id", nullable = false)
-    open var shoppingCart: com.tsypk.databasecoursework.model.ShoppingCart? = null
+    open var shoppingCart: ShoppingCart = ShoppingCart()
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "buyer_id")
-    open var buyer: Buyer? = null
+    open var buyer: Buyer = Buyer()
 
     @Column(name = "amount", nullable = false)
-    open var amount: Double? = null
+    open var amount: Double = 0.0
 }

@@ -2,7 +2,6 @@ package com.tsypk.databasecoursework.model
 
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable
-import jakarta.persistence.Entity
 import org.hibernate.Hibernate
 import java.io.Serializable
 import java.util.*
@@ -10,10 +9,10 @@ import java.util.*
 @Embeddable
 open class CarToCarPartId : Serializable {
     @Column(name = "car_id", nullable = false)
-    open var carId: Int? = null
+    open var carId: Int = 0
 
     @Column(name = "car_part_id", nullable = false)
-    open var carPartId: Int? = null
+    open var carPartId: Int = 0
 
     override fun hashCode(): Int = Objects.hash(carId, carPartId)
     override fun equals(other: Any?): Boolean {
